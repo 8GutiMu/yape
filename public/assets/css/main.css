@@ -73,3 +73,9 @@
     font-size: 40px;
     padding: 14px;
 }
+
+#checkBoxRegistro{
+    left: 260px;
+    opacity: 1;
+    width: 40px;
+}

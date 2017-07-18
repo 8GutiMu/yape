@@ -4,8 +4,12 @@
 
 
  var $inputRegistro = $(".inputRegistro");
- console.log("BREN", $inputRegistro)
- var $form = $("#registro-form")
+ var $btnRegistro = $("#btn_registro");
+ var $form = $("#registro-form");
+ var $check = $("#checkBoxRegistro")
+ 
+ console.log($check)
+console.log()
 
  $form.submit(sacarNumero)
  $inputRegistro.keyup(contador)
@@ -15,8 +19,13 @@ var contador = 0;
 
  function contador() {
  var contador = $inputRegistro.val().length
-     if(contador = 10){
+     if(contador == 10){
        console.log("BREN") 
+         $btnRegistro.removeAttr("disabled")
+         $check.attr("checked","true")
+     }else{
+         $btnRegistro.attr("disabled","true")
+         $check.removeAttr("checked")
      }
      
  }
