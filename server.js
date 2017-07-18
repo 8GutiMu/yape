@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(morgan(format));
+app.use("/static",express.static(__dirname +'/node_modules'))
 
 let router = express.Router();
 
