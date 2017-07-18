@@ -3,7 +3,7 @@
  });
 
 
- var cargarPagina = function () {
+
      var $inputRegistro = $(".inputRegistro");
      var $btnRegistro = $("#btn_registro");
      var $form = $("#registro-form");
@@ -14,8 +14,7 @@
      $form.submit(sacarNumero)
      $inputRegistro.keyup(contador)
 
- }
-
+ 
 
  function contador() {
      var contador = $inputRegistro.val().length
@@ -35,4 +34,4 @@
      console.log($inputRegistro.val())
  }
 
- $(document).ready(cargarPagina)
+
