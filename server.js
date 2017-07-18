@@ -23,8 +23,11 @@ app.use("/static",express.static(__dirname +'/node_modules'))
 let router = express.Router();
 
 router.get('/', (req, res) => {
-  res.json({ name: 'yape-api',version: "0.0.1"});
+ res.json({ name: 'yape-api',version: "0.0.1"});
+    
+    
 });
+
 
 app.use('/api',apiUsers(router,db));
 

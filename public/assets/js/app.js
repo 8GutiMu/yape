@@ -3,34 +3,36 @@
  });
 
 
- var $inputRegistro = $(".inputRegistro");
+var cargarPagina = function(){
+    var $inputRegistro = $(".inputRegistro");
  var $btnRegistro = $("#btn_registro");
  var $form = $("#registro-form");
  var $check = $("#checkBoxRegistro")
- 
+
  console.log($check)
-console.log()
 
  $form.submit(sacarNumero)
  $inputRegistro.keyup(contador)
 
-var contador = 0;
+}
 
 
  function contador() {
- var contador = $inputRegistro.val().length
-     if(contador == 10){
-       console.log("BREN") 
+     var contador = $inputRegistro.val().length
+     if (contador == 10) {
+         console.log("BREN")
          $btnRegistro.removeAttr("disabled")
-         $check.attr("checked","true")
-     }else{
-         $btnRegistro.attr("disabled","true")
+         $check.attr("checked", "true")
+     } else {
+         $btnRegistro.attr("disabled", "true")
          $check.removeAttr("checked")
      }
-     
+
  }
 
  function sacarNumero(e) {
      e.preventDefault();
      console.log($inputRegistro.val())
  }
+
+$(document).ready(cargarPagina)
