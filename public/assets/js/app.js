@@ -3,18 +3,18 @@
  });
 
 
-var cargarPagina = function(){
-    var $inputRegistro = $(".inputRegistro");
- var $btnRegistro = $("#btn_registro");
- var $form = $("#registro-form");
- var $check = $("#checkBoxRegistro")
+ var cargarPagina = function () {
+     var $inputRegistro = $(".inputRegistro");
+     var $btnRegistro = $("#btn_registro");
+     var $form = $("#registro-form");
+     var $check = $("#checkBoxRegistro");
 
- console.log($check)
+     console.log($check)
 
- $form.submit(sacarNumero)
- $inputRegistro.keyup(contador)
+     $form.submit(sacarNumero)
+     $inputRegistro.keyup(contador)
 
-}
+ }
 
 
  function contador() {
@@ -35,4 +35,4 @@ var cargarPagina = function(){
      console.log($inputRegistro.val())
  }
 
-$(document).ready(cargarPagina)
+ $(document).ready(cargarPagina)
