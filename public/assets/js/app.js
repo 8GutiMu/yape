@@ -19,12 +19,17 @@
  function contador() {
      var contador = $inputRegistro.val().length
      if (contador == 10) {
-         console.log("BREN")
          $btnRegistro.removeAttr("disabled")
          $check.attr("checked", "true")
      } else {
          $btnRegistro.attr("disabled", "true")
          $check.removeAttr("checked")
+     }
+     
+   
+     
+     if($check.check){
+         console.log("bren")
      }
 
  }
