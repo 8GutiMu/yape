@@ -1,13 +1,14 @@
 var api = {
     url: 'http://localhost:3000/api/registerNumber',
-    urlCode: 'http://localhost:3000/api/resendCode'
+    urlCode: 'http://localhost:3000/api/resendCode',
+    urlUser: 'http://localhost:3000/api/createUser'
 };
 
 
 var $btnRegistro = $("#btn_registro")
 var $inputRegistro = $(".inputRegistro");
 var checkPrueba = true;
-console.log($inputRegistro)
+
 
 var phone1;
 var code1;
@@ -18,16 +19,17 @@ var code1;
 $btnRegistro.click(makePost)
 
 function makePost() {
-
-
+    console.log("ENTREO?")
     $.post(api.url, {
             phone: $inputRegistro.val(),
-            terms: checkPrueba
+            name: "bren",
+            email: "mrbe@hotmail.com",
+            password: 554444444,
 
         }).then(function (response) {
-        console.log("CODIGO DE VALIDACION", response.data.code)
+            console.log("CODIGO DE VALIDACION", response.data.code)
             validacion(response)
-        
+
 
         })
         .catch(function (error) {
@@ -36,20 +38,20 @@ function makePost() {
 
 }
 
-
 function validacion(response) {
 
     if (response.success == true) {
 
 
         var res = response.data;
+        var terms = res.terms;
         var phone_ = res.phone;
         var code = res.code;
 
 
         localStorage.setItem("phone", phone_);
         localStorage.setItem("code", code);
-    
+        console.log(response.data.code)
 
         setTimeout(function (response) {
 
@@ -60,19 +62,38 @@ function validacion(response) {
             }).then(function (mensaje) {
                 console.log(mensaje)
                 console.log("NUEVO CODIGO DE VALIDACION", mensaje.data),
-                localStorage.setItem("code", mensaje.data)
+                    localStorage.setItem("code", mensaje.data)
                 console.log(localStorage.getItem("code"))
             }).catch(function (error) {
                 console.log(error)
             })
         }, 21000)
 
-        phone1= localStorage.getItem("phone")
-        code1= localStorage.getItem("code")
-        
-       location.href = "usuario.html";
+
+        phone1 = localStorage.getItem("phone")
+        code1 = localStorage.getItem("code")
+
+
 
 
     }
 
+}
+
+
+
+
+function crearUsuario() {
+    $.post(api.urlUser, {
+        phone: $inputRegistro.val(),
+        name: Bren,
+        email: "mrbe@hotmail.com",
+        password: 554444444,
+        
+    }).then(function (mensaje) {
+        console.log(mensaje)
+
+    }).catch(function (error) {
+        
+    })
 }
