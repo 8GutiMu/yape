@@ -13,16 +13,33 @@ console.log($inputRegistro)
 $btnRegistro.click(makePost)
 
 function makePost() {
-   
-    console.log("ENTRE A POST")
+
+    
     $.post(api.url, {
             phone: $inputRegistro.val(),
             terms: "true"
 
         }).then(function (response) {
-            console.log(response)
+            validacion(response)
+        actualizarDatos(response)
         })
         .catch(function (error) {
             console.log(error)
         });
+
+}
+
+
+function validacion(response) {
+
+    if (response.success == true) {
+        location.href = "usuario.html";
+    }
+
+}
+
+function actualizarDatos(response) {
+    alert("hola")
+    var res = response.data;
+    console.log(res.phone)
 }
