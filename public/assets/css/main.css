@@ -79,3 +79,15 @@
     opacity: 1;
     width: 40px;
 }
+
+/*datos*/
+
+.inputDatos{
+     width: 100% !important;
+    font-size: 40px !important;
+    border-bottom: none !important;
+}
+
+.iconDatos{
+    
+}

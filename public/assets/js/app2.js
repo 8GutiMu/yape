@@ -1,18 +1,28 @@
 var api = {
-    url: 'localhost:3000/api/registerNumber'
+    url: 'http://localhost:3000/api/registerNumber'
 };
 
-event.preventDefault();
 
-var $inputRegistro = $(".inputRegistro").val();
+var $btnRegistro = $("#btn_registro")
+var $inputRegistro = $(".inputRegistro");
 
 console.log($inputRegistro)
 
 
 
-$.post(api.url, {
-    var phone = 5555555;
-    
-}, function () {
-    renderTopic(topic);
-});
+$btnRegistro.click(makePost)
+
+function makePost() {
+   
+    console.log("ENTRE A POST")
+    $.post(api.url, {
+            phone: $inputRegistro.val(),
+            terms: "true"
+
+        }).then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error)
+        });
+}

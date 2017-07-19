@@ -9,9 +9,8 @@
      var $form = $("#registro-form");
      var $check = $("#checkBoxRegistro");
 
-     console.log($check)
 
-     $form.submit(sacarNumero)
+    
      $inputRegistro.keyup(contador)
 
  
@@ -34,9 +33,5 @@
 
  }
 
- function sacarNumero(e) {
-     e.preventDefault();
-     console.log($inputRegistro.val())
- }
 
 
