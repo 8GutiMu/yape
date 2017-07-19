@@ -9,6 +9,10 @@ var $inputRegistro = $(".inputRegistro");
 var checkPrueba = true;
 console.log($inputRegistro)
 
+var phone1;
+var code1;
+
+
 
 
 $btnRegistro.click(makePost)
@@ -63,9 +67,10 @@ function validacion(response) {
             })
         }, 21000)
 
+        phone1= localStorage.getItem("phone")
+        code1= localStorage.getItem("code")
         
-
-        //location.href = "usuario.html";
+       location.href = "usuario.html";
 
 
     }
