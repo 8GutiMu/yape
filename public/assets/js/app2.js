@@ -5,12 +5,28 @@ var api = {
 };
 
 
+
+//El navegador lee Tarjeta y me manda warnigs asi que le cambie de tarjeta a PERRITO :D 
+
 var $btnRegistro = $("#btn_registro")
 var $inputRegistro = $(".inputRegistro");
+var $nombre = $("#registroNombre")
+var $email = $("#registroEmail")
+var $contrasena = $("#registroContrasena")
 var checkPrueba = true;
+var nuemroDeTarjetaCasilla = $("#perrito");
+var mesTarjeta = $("#mesPerrito")
 
+$nombre.keyup(validarDatosUsuario)
+$email.keyup(validarDatosUsuario)
+$contrasena.keyup(validarDatosUsuario)
+nuemroDeTarjetaCasilla.keyup(validarPerrito)
+mesTarjeta.keyup(validarPerrito)
+
+var contador = 0;
 
 $btnRegistro.click(makePost)
+
 
 function makePost() {
 
@@ -19,7 +35,7 @@ function makePost() {
             terms: checkPrueba
 
         }).then(function (response) {
-        console.log(response)
+            console.log(response)
             console.log("CODIGO DE VALIDACION", response.data.code)
             validacion(response)
 
@@ -45,25 +61,29 @@ function validacion(response) {
 
             }).then(function (mensaje) {
                 console.log(mensaje)
-               guardarNuevoCodigo(mensaje.data)
-                    
+                guardarNuevoCodigo(mensaje.data)
+
             }).catch(function (error) {
                 console.log(error)
             })
         }, 21000)
 
-        location.href="usuario.html"
-      
+        location.href = "usuario.html"
+
     }
-    
+
 }
 
-function crearUsuario() {
+function crearUsuario(nombre,email,contrasena) {
+    
+    var number = localStorage.getItem("phone")
+    console.log(number,nombre,email,contrasena)
+    
     $.post(api.urlUser, {
-        phone: $inputRegistro.val(),
-        name: "Bren",
-        email: "mrbe@hotmail.com",
-        password: "AB444444",
+        phone: number,
+        name: nombre,
+        email: email,
+        password: contrasena,
 
 
 
@@ -75,7 +95,7 @@ function crearUsuario() {
     })
 }
 
-function guardarLocalStorage(repsuesta,recodigo) {
+function guardarLocalStorage(repsuesta, recodigo) {
     var res = repsuesta.data;
     var terms__ = res.terms;
     var phone__ = res.phone;
@@ -85,18 +105,51 @@ function guardarLocalStorage(repsuesta,recodigo) {
     localStorage.setItem("phone", phone__);
     localStorage.setItem("code", code__);
     localStorage.setItem("terms", terms__)
-    
-     mostrarlocalStorage();
- 
+
+    mostrarlocalStorage();
+
 }
 
-function mostrarlocalStorage(){
-       console.log(localStorage.getItem("phone"))
+function mostrarlocalStorage() {
+    console.log(localStorage.getItem("phone"))
     console.log(localStorage.getItem("code"))
     console.log(localStorage.getItem("terms"))
 }
 
-function guardarNuevoCodigo(mensaje){
-   console.log(mensaje)
-    localStorage.setItem("newCode",mensaje)
+function guardarNuevoCodigo(mensaje) {
+    console.log(mensaje)
+    localStorage.setItem("newCode", mensaje)
+}
+
+function validarDatosUsuario() {
+    var nombre = $nombre.val();
+    var email = $email.val()
+    var contrasena = $contrasena.val()
+    if (nombre != "" && email != "" && contrasena != ""){
+       $("#btn_registroDATOS").removeAttr("disabled")
+        $("#btn_registroDATOS").click(function(){
+            crearUsuario(nombre,email,contrasena)
+        })
+        setTimeout(function(){location.href= "bien.html"},10)
+    }else{
+        $("#btn_registroDATOS").attr("disabled")
+    }
+    
+}
+
+
+//El navegador lee Tarjeta y me manda warnigs asi que le cambie de tarjeta a PERRITO :D 
+
+function validarPerrito(){
+    var numeroDePerrito = $("#perrito").val()
+    var mesDePerrito = $("#mesPerrito").val()
+    var anoDePerrito = $("#anoPerrito").val()
+    contador +=1;
+    console.log(contador)
+    console.log(numeroDePerrito)
+    console.log(mesDePerrito)
+    if(numeroDePerrito.length == 16 &&  (mesDePerrito == (1||2||3||4||5||6||7||8||9||10||11||12))  && (anoDePerrito == (17 || 18 ||19||20||21||22||23||24))){
+        console.log("HOLA")
+        
+    }
 }
