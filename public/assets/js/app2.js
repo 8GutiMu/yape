@@ -16,12 +16,14 @@ var $contrasena = $("#registroContrasena")
 var checkPrueba = true;
 var nuemroDeTarjetaCasilla = $("#perrito");
 var mesTarjeta = $("#mesPerrito")
+var anioTarjeta = $("#anoPerrito")
 
 $nombre.keyup(validarDatosUsuario)
 $email.keyup(validarDatosUsuario)
 $contrasena.keyup(validarDatosUsuario)
 nuemroDeTarjetaCasilla.keyup(validarPerrito)
 mesTarjeta.keyup(validarPerrito)
+anioTarjeta.keyup(validarPerrito)
 
 var contador = 0;
 
@@ -149,9 +151,10 @@ function validarPerrito(){
     console.log(contador)
     console.log(numeroDePerrito)
     console.log(mesDePerrito)
-    if(numeroDePerrito.length == 16 &&  (mesDePerrito == (1||2||3||4||5||6||7||8||9||10||11||12))  && (anoDePerrito == (17 || 18 ||19||20||21||22||23||24))){
+    console.log(anoDePerrito)
+    if(numeroDePerrito.length == 16 &&  mesDePerrito >0 && mesDePerrito <13  && (anoDePerrito >17)){
         console.log("HOLA")
-        btnRegistroTarje.removeAttr("disable")
+        btnRegistroTarje.removeAttr("disabled")
         
     }
 }
