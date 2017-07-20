@@ -25,8 +25,7 @@ function validarCodigo(e) {
     var codigoGenerado = localStorage.getItem("codigoGenerado")
    
     if (codigoGenerado == codigoIngresado) {
-        console.log("cambio de pagina")
-        //location.href="usuarioDatos.html"
+        location.href="usuarioDatos.html"
     } else {
         alert("Código Incorrecto")
     }

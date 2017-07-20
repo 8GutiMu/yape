@@ -101,3 +101,33 @@
     flex-direction: column;
     align-items: center;
 }
+
+/*final*/
+#hola{
+    height: 40vh;
+    background-color: #451e36
+
+}
+
+#info{
+    height: 60vh;
+    background-color: #38052a
+}
+
+.textoBlanco{
+    color: white
+}
+
+.contenedorHola{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.divBlanco{
+    height: 1px;
+    background-color: white
+}
+.botonesFinales{
+    margin-top: 154px;
+}

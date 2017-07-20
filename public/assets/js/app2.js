@@ -19,6 +19,7 @@ function makePost() {
             terms: checkPrueba
 
         }).then(function (response) {
+        console.log(response)
             console.log("CODIGO DE VALIDACION", response.data.code)
             validacion(response)
 
