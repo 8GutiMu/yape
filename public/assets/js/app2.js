@@ -19,17 +19,15 @@ var code1;
 $btnRegistro.click(makePost)
 
 function makePost() {
-    console.log("ENTREO?")
+    
     $.post(api.url, {
             phone: $inputRegistro.val(),
-            name: "bren",
-            email: "mrbe@hotmail.com",
-            password: 554444444,
+            terms: checkPrueba
 
         }).then(function (response) {
             console.log("CODIGO DE VALIDACION", response.data.code)
             validacion(response)
-
+crearUsuario();
 
         })
         .catch(function (error) {
@@ -73,23 +71,19 @@ function validacion(response) {
         phone1 = localStorage.getItem("phone")
         code1 = localStorage.getItem("code")
 
-
-
-
     }
 
 }
 
-
-
-
 function crearUsuario() {
     $.post(api.urlUser, {
         phone: $inputRegistro.val(),
-        name: Bren,
+        name: "Bren",
         email: "mrbe@hotmail.com",
-        password: 554444444,
+        password: "AB444444",
         
+        
+
     }).then(function (mensaje) {
         console.log(mensaje)
 
@@ -97,3 +91,4 @@ function crearUsuario() {
         
     })
 }
+
