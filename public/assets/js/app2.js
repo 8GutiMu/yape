@@ -144,12 +144,14 @@ function validarPerrito(){
     var numeroDePerrito = $("#perrito").val()
     var mesDePerrito = $("#mesPerrito").val()
     var anoDePerrito = $("#anoPerrito").val()
+    var btnRegistroTarje = $("#btn_registroTarjeta")
     contador +=1;
     console.log(contador)
     console.log(numeroDePerrito)
     console.log(mesDePerrito)
     if(numeroDePerrito.length == 16 &&  (mesDePerrito == (1||2||3||4||5||6||7||8||9||10||11||12))  && (anoDePerrito == (17 || 18 ||19||20||21||22||23||24))){
         console.log("HOLA")
+        btnRegistroTarje.removeAttr("disable")
         
     }
 }
