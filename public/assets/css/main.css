@@ -44,20 +44,18 @@
     color: #00c3a3
 }
 
-.inputRegistro  {
+.inputRegistro {
     width: 45% !important;
     font-size: 40px !important;
     border-bottom: none !important;
 }
 
-.inputRegistro:focus{
-   
+.inputRegistro:focus {
     box-shadow: 0 !important;
 }
 
-.ingresoCelular{
+.ingresoCelular {
     border-bottom: 1px solid #9e9e9e;
-        
 }
 
 .btn_amarillo_registro {
@@ -74,21 +72,32 @@
     padding: 14px;
 }
 
-#checkBoxRegistro{
+#checkBoxRegistro {
     left: 260px;
     opacity: 1;
     width: 40px;
 }
 
+
 /*datos*/
 
-.inputDatos{
-     width: 40% !important;
+.inputDatos {
+    width: 40% !important;
     font-size: 40px !important;
     border-bottom: none !important;
 }
 
-.iconDatos{
-    
-    
+
+/*Inicio de Yape*/
+
+.bienAmarillo {
+    background-color: #fbd43b;
+    height: 100vh;
+    width: 100%;
+}
+
+.contenedorBien {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

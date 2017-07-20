@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -33,9 +33,10 @@
                 <div class="col s12 m12">
                     <div class="row">
                         <div class="ingresoCelular center">
-                           
+                           <form id="usuarioForm">
                             <h5>
-                                <i class="material-icons">lock</i><input type="number" class="s" placeholder="     - - - - - "></h5>
+                                <i class="material-icons">lock</i><input type="number" id="codigoValidacion" placeholder="    - - - - - - "></h5>
+                                </form>
                         </div>
                         <div class="row">
                             <h5 class="grisSuave">Reintentar en <i class="material-icons">schedule</i> 21</h5>
@@ -50,6 +51,7 @@
     <script src="./../static/materialize-css/dist/js/materialize.min.js"></script>
     <script src="../assets/js/app.js"></script>
     <script src="../assets/js/app2.js"></script>
+    <script src="../assets/js/cambiarResitroAUsuario.js"></script>
 </body>
 
 </html>
