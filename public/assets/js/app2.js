@@ -1,7 +1,8 @@
 var api = {
     url: 'http://localhost:3000/api/registerNumber',
     urlCode: 'http://localhost:3000/api/resendCode',
-    urlUser: 'http://localhost:3000/api/createUser'
+    urlUser: 'http://localhost:3000/api/createUser',
+    urlTarjeta: "http://localhost:3000/api/registerCard"
 };
 
 
@@ -17,6 +18,7 @@ var checkPrueba = true;
 var nuemroDeTarjetaCasilla = $("#perrito");
 var mesTarjeta = $("#mesPerrito")
 var anioTarjeta = $("#anoPerrito")
+var btnRegistroTarjeta = $("#btn_registroTarjeta")
 
 $nombre.keyup(validarDatosUsuario)
 $email.keyup(validarDatosUsuario)
@@ -40,12 +42,14 @@ function makePost() {
             console.log(response)
             console.log("CODIGO DE VALIDACION", response.data.code)
             validacion(response)
+        
 
         })
         .catch(function (error) {
             console.log(error)
         });
 
+    
 }
 
 function validacion(response) {
@@ -70,17 +74,17 @@ function validacion(response) {
             })
         }, 21000)
 
-        location.href = "usuario.html"
+     location.href = "usuario.html"
 
     }
 
 }
 
-function crearUsuario(nombre,email,contrasena) {
-    
+function crearUsuario(nombre, email, contrasena) {
+
     var number = localStorage.getItem("phone")
-    console.log(number,nombre,email,contrasena)
-    
+    console.log(number, nombre, email, contrasena)
+
     $.post(api.urlUser, {
         phone: number,
         name: nombre,
@@ -91,6 +95,7 @@ function crearUsuario(nombre,email,contrasena) {
 
     }).then(function (mensaje) {
         console.log(mensaje)
+        
 
     }).catch(function (error) {
 
@@ -109,6 +114,7 @@ function guardarLocalStorage(repsuesta, recodigo) {
     localStorage.setItem("terms", terms__)
 
     mostrarlocalStorage();
+    
 
 }
 
@@ -127,34 +133,49 @@ function validarDatosUsuario() {
     var nombre = $nombre.val();
     var email = $email.val()
     var contrasena = $contrasena.val()
-    if (nombre != "" && email != "" && contrasena != ""){
-       $("#btn_registroDATOS").removeAttr("disabled")
-        $("#btn_registroDATOS").click(function(){
-            crearUsuario(nombre,email,contrasena)
+    if (nombre != "" && email != "" && contrasena != "") {
+        $("#btn_registroDATOS").removeAttr("disabled")
+        $("#btn_registroDATOS").click(function () {
+            crearUsuario(nombre, email, contrasena)
         })
-        setTimeout(function(){location.href= "bien.html"},10)
-    }else{
+        setTimeout(function () {
+           
+            location.href = "bien.html"
+        }, 10)
+    } else {
         $("#btn_registroDATOS").attr("disabled")
     }
-    
+
 }
 
 
 //El navegador lee Tarjeta y me manda warnigs asi que le cambie de tarjeta a PERRITO :D 
 
-function validarPerrito(){
+function validarPerrito() {
     var numeroDePerrito = $("#perrito").val()
     var mesDePerrito = $("#mesPerrito").val()
     var anoDePerrito = $("#anoPerrito").val()
     var btnRegistroTarje = $("#btn_registroTarjeta")
-    contador +=1;
-    console.log(contador)
-    console.log(numeroDePerrito)
-    console.log(mesDePerrito)
-    console.log(anoDePerrito)
-    if(numeroDePerrito.length == 16 &&  mesDePerrito >0 && mesDePerrito <13  && (anoDePerrito >17)){
-        console.log("HOLA")
+    
+    console.log(numeroDePerrito.length)
+    if (numeroDePerrito.length == 16 && mesDePerrito > 0 && mesDePerrito < 13 && (anoDePerrito > 17)) {
+      
         btnRegistroTarje.removeAttr("disabled")
-        
+         guardarDatosTarjeta(numeroDePerrito,mesDePerrito,anoDePerrito)
+
     }
 }
+
+function guardarDatosTarjeta(numero,mes,anio){
+    localStorage.setItem("numeroT",numero)
+    localStorage.setItem("mesT",mes)
+    localStorage.setItem("anioT",anio)
+    
+    btnRegistroTarjeta.click(function(){
+        location.href="claveTarjeta.html"
+    })
+    
+}
+
+
+
